@@ -1,0 +1,80 @@
+<!-- <div class="bg-primary d-flex justify-content-between mb-4 text-wrap">
+
+        <div class="d-flex">
+                <div class="align-self-start bg-white rounded-5 overflow-hidden me-1 align-items-center"  style="width: 20px; height: 20px; object-fit: cover; ">
+                    <img class="d-flex aling-self-start" [src]="commentData.user_img" alt="" style="width: 20px; height: 20px; object-fit: cover; ">
+                </div>
+                <div>
+
+                <div class="d-flex align-items-center mb-1">  
+                    <h5 class="m-0 fw-medium">{{commentData.user_name}}</h5>
+                    <h6 class="text-light m-0 ms-3 fw-medium opacity-25">Há 2 meses</h6>
+                </div>
+                <div class="text-wrap">
+                    <h5 class="m-0 text-light fw-normal  text-wrap">{{commentData.text}}</h5>
+
+                </div>
+
+                
+            <div class="d-flex mt-1">
+                <div class="px-1 rounded-4 bg-light bg-opacity-25 me-1 d-flex align-items-center">
+                    <span *ngFor="let emojis of selectedEmojis" [innerHTML]="emojis"></span>
+                    <h6 *ngIf="selectedEmojis.length > 0" class="m-0 ms-1 text-light">{{selectedEmojis.length}}</h6>
+                </div>
+                <button (click)="handleChooseEmoji()" class="p-0 bg-transparent border-0">
+                    <i class="material-icons text-secondary d-flex fs-3" >add</i>  
+                </button>
+                <emoji-mart *ngIf="chooseEmoji" class="position-absolute" (emojiClick)="onEmojiSelect($event)"></emoji-mart>    
+            </div>
+
+                </div>
+        </div>
+    
+    <app-more-dropdown></app-more-dropdown>
+  
+
+</div> -->
+
+<div class="d-flex mb-3">
+    <div class="col-1 me-1">
+        <div class="align-self-start bg-white rounded-5 overflow-hidden me-1 align-items-center"  style="width: 20px; height: 20px; object-fit: cover; ">
+            <img class="d-flex aling-self-start" [src]="config.user_img" alt="" style="width: 20px; height: 20px; object-fit: cover; ">
+        </div>
+    </div>
+    <div class="col-12">
+        <div>
+
+            <div class="d-flex align-items-center mb-1">  
+                <h5 class="m-0 fw-semibold">{{config.user_name}}</h5>
+                <h6 class="text-light m-0 ms-3 fw-medium opacity-25">Há 2 meses</h6>
+            </div>
+            <div class="text-wrap">
+                <h5 class="m-0 text-light fw-normal  text-wrap">{{config.text}}</h5>
+
+            </div>
+
+            
+        <div class="d-flex mt-1 position-relative">
+            <emoji-mart *ngIf="chooseEmoji" class="position-absolute" style="z-index: 1000;" (emojiClick)="onEmojiSelect($event)"></emoji-mart>  
+
+            <div class="px-1 rounded-4 bg-light bg-opacity-25 me-1 d-flex align-items-center align-self-start" *ngIf="selectedEmojis.length > 0">
+                <span *ngFor="let emojis of selectedEmojis" [innerHTML]="emojis"></span>
+                <h6 *ngIf="selectedEmojis.length > 0" class="m-0 ms-1 text-light">{{selectedEmojis.length}}</h6>
+            </div>
+          
+            <button (click)="handleChooseEmoji()" class="p-0 bg-transparent border-0">
+                <i class="material-icons text-secondary d-flex fs-3" >add</i>  
+            </button>
+             
+        </div>
+
+            </div>
+    </div>
+    <div class="col-1 text-center">
+        <div>
+            <app-more-dropdown></app-more-dropdown>
+
+        </div>
+
+    </div>
+</div>

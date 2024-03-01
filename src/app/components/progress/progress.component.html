@@ -1,0 +1,11 @@
+<div class="d-flex align-items-center">
+    <h6 class="fw-normal m-0 me-2">{{progress.value}}h</h6>
+    <div class="rounded-4 overflow-hidden" style="height: 8px; width: 300px;">
+      <div class="h-100" [class]="'bg-'+progress.color"
+        [ngClass]="{'w-100': progress.value === 40,
+                    'w-75': progress.value === 30,
+                    'w-50': progress.value === 20}">
+  
+      </div>
+    </div>
+  </div>

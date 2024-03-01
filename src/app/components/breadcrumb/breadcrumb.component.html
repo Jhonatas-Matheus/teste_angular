@@ -1,0 +1,6 @@
+<div class="d-flex align-items-center">
+    <a *ngFor="let breadcrumb of config; let i = index;" [href]="breadcrumb.link" class="text-white text-decoration-none d-flex align-items-center">
+        <h6 class="m-0 fw-bold text-light">{{breadcrumb.text}}</h6> 
+        <i class="material-icons text-light d-flex fs-6 mx-3" *ngIf="i != (config.length - 1)" >arrow_forward_ios</i>  
+     </a>
+</div>

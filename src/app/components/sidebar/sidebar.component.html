@@ -1,0 +1,32 @@
+<div class="bg-dark px-3 py-5 d-flex flex-column align-items-center justify-content-between" style="height: 100vh;">
+        <div class="d-flex flex-column align-items-center">
+            <div class="d-flex mb-4">
+                <img [src]="sidebarOptions.logoImg" alt="" style="height: 20px; object-fit: cover; ">
+                
+            </div>
+            <a class="text-center d-flex align-items-center "  [href]="sidebarOptions.perfil.link">
+                <div class="d-flex bg-white rounded-5 overflow-hidden mb-4" >
+                    <img [src]="sidebarOptions.perfil.img" alt="" style="width: 35px; height: 35px; object-fit: cover; ">
+                </div>
+            </a>
+           
+
+            <div>
+                <a class="text-decoration-none" [href]="'/'+Options.link" *ngFor="let Options of sidebarOptions.sideOptions ">
+                    <div class="d-flex align-items-center mb-4 text-white">
+                        <i class="material-icons d-flex fs-3 " [ngClass]="{'text-secondary': handleActiveRouter(Options.active) === true, 'text-light': handleActiveRouter(Options.active) === false }" >{{Options.icon}}</i>  
+                        <h4 *ngIf="Options.text" class="m-0 align-self-center fw-semibold ms-2">{{Options.text}}</h4>
+                    </div>
+                </a>
+            </div>
+            
+
+        </div>
+       
+        <div class="text-danger d-flex align-items-center" (click)="handleLogout()">
+            <i class="material-icons d-flex fs-3 ">logout</i>  
+            <h4 class="m-0 align-self-center fw-medium ms-2" *ngIf="sidebarOptions.sideOptions[0].text">Sair</h4>
+        </div>
+
+</div>
+

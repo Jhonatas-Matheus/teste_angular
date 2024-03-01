@@ -1,0 +1,28 @@
+<div class="border border-2 border-dark p-2 rounded-2 mb-2">
+    <div class="row g-1">
+        <div class="col-2 d-flex justify-content-start">
+            <div class=" bg-dark rounded-2 p-2 d-flex justify-content-center">
+                <div class=" bg-white rounded-5 overflow-hidden align-items-center"  style="width: 20px; height: 20px; object-fit: cover; ">
+                    <img class="d-flex aling-self-start" [src]="config.user_img" alt="" style="width: 20px; height: 20px; object-fit: cover; ">
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-7 d-flex align-items-center">
+            <div>
+                <h5 class="m-0 fw-medium" style="margin-bottom: 3px !important;">{{config.user_name}}</h5>
+                <h6 class="m-0 fw-normal text-light">{{config.office}}</h6>
+            </div>
+           
+        </div>
+        <div class="col-3 d-flex  align-items-center">
+            <div class="d-flex">
+                <i class="material-icons text-light d-flex fs-4 me-1" >access_time_filled</i>  
+
+                <h5 class="m-0 fw-normal">{{config.days}} dias</h5>
+            </div>
+            
+        </div>
+    </div>
+        
+</div>

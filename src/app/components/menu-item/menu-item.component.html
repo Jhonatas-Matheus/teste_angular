@@ -1,0 +1,7 @@
+<a [href]="'/'+menuItemData.link" class="w-100 text-decoration-none"  >
+    <div class="d-flex justify-content-start align-items-center px-2 py-1 rounded-3" [ngClass]="{'text-active': isRouter}">
+        <i class="material-icons d-flex fs-3 me-2" *ngIf="!menuItemData.color" [ngClass]="{'text-secondary': isRouter, 'text-light': !isRouter}">{{menuItemData.icon}}</i>
+        <i class="material-icons d-flex fs-3 me-2" *ngIf="menuItemData.color" [class]="'text-'+menuItemData.color">{{menuItemData.icon}}</i>
+        <h5 class="m-0 fw-medium text-white align-self-center">{{menuItemData.text}}</h5>
+    </div>
+</a>

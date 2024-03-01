@@ -1,0 +1,9 @@
+<div class="d-flex justify-content-between align-items-center px-2 py-1 rounded-3" [class]="'bg-'+config.color">
+    <div class="d-flex align-items-center">
+        <i class="material-icons d-flex fs-4 me-2 text-light">attach_file</i>
+        <a [href]="config.link" class="text-white fs-5">{{config.text}}</a>
+    </div>
+    <div class="">
+        <app-more-dropdown></app-more-dropdown>
+    </div>
+</div>

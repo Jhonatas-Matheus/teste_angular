@@ -1,0 +1,41 @@
+.btn-show {
+    opacity: 0;
+    }
+    
+    tr:hover .btn-show {
+    opacity: 1;
+    }
+    
+    .me-n1 {
+        margin-left: -7px;
+    }
+
+  
+    #table-dropdown .success{
+        --bs-table-active-bg: rgba(0, 255, 0, 0.1);
+    }
+
+    #table-dropdown .danger{
+        --bs-table-active-bg: rgba(255, 0, 0, 0.1);
+    }
+
+    #table-dropdown .secondary{
+        --bs-table-active-bg: rgba(255, 187, 0, 0.1);
+    }
+
+    #table-dropdown .info{
+        --bs-table-active-bg: rgba(0, 106, 255, 0.1);
+    }
+    .cursor-pointer {
+        cursor: pointer;
+    }
+   
+    .text-limited {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-height: 16px;     /* fallback */
+        max-height: 32px;      /* fallback */
+        -webkit-line-clamp: 1; /* number of lines to show */
+        -webkit-box-orient: vertical;
+      }

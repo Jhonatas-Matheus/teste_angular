@@ -1,0 +1,18 @@
+<div class="bg-primary px-3 py-1 rounded-5 d-flex align-items-center">
+    <small class="fw-semibold text-light">RESPONSÁVEIS</small>
+    <i class="material-icons text-secondary d-flex fs-3 mx-1 cursor-pointer" *ngIf="!showResponsible" (click)="handleShowResponsible(0)">keyboard_arrow_left</i>  
+    <i class="material-icons text-secondary d-flex fs-3 mx-1 cursor-pointer" *ngIf="showResponsible" (click)="setResponsible()">keyboard_arrow_right</i>  
+
+    <div class="d-flex">
+        <div class="d-flex align-items-center" *ngFor="let responsible of responsibleData; let i = index">
+            <div (click)="handleShowResponsible(i)" class="d-flex cursor-pointer bg-white rounded-5 overflow-hidden me-n1 border border-primary" 
+              >
+              <img [src]="responsible.img" alt="" style="width: 20px; height: 20px; object-fit: cover; ">
+            </div>
+            <div *ngIf="showResponsible && i === responsibleSelected" class="me-2 ms-1">
+                <h6 class="m-0 fw-semibold text-secondary text-uppercase" style="font-size: 8px;">{{responsible.name}}</h6>
+                <h6 class="m-0 fw-semibold">{{responsible.office}}</h6>
+            </div>
+          </div>
+    </div>
+</div>

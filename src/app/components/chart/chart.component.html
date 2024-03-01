@@ -1,0 +1,54 @@
+<!-- CHART BAR VERTICAL -->
+<span *ngIf="chartData.type === 'horizontal-bar'">
+    <div [style.height]="chartData.heightBox+'px'" >
+        <div class="h-100 d-flex align-items-end ">
+            <div class="me-3 barra"  [style.width]="chartData.value.length+'%'" *ngFor="let chart of chartData.value; let i = index;" [style.height]="valueBarVertical(chart, chartData.value, chartData.heightBox)+'px'">
+                <h6 class="fw-bold text-center">{{chart}}</h6>
+                <div class="h-100 rounded-top-5" [class]="'bg-degrade-'+chartData.colors[i]"  >
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="d-flex mt-5">
+        <h6 class="fw-medium me-3 text-center"  *ngFor="let chartLabels of chartData.labels; let i = index;" [style.width]="chartData.value.length+'%'">{{chartLabels}}</h6>
+    </div>
+</span>
+
+
+
+
+<!-- CHART BAR HORIZONTAL -->
+<div class="w-100" *ngIf="chartData.type === 'vertical-bar'">
+    <div class="w-100 mb-3" *ngFor="let chart of chartData.value; let i = index">
+        <div class="w-100 d-flex justify-content-between mb-2" >
+            <h6 class="fw-bold m-0">{{chartData.labels[i]}}</h6>
+            <h6 class="fw-bold m-0">{{chart}}</h6>
+        </div>
+        <div class="w-100 rounded-5 overflow-hidden" style="height: 16px;" >
+            <div class="h-100 rounded-5 overflow-hidden barraHorizontal" [class]="'bg-degrade-horizontal-'+chartData.colors[i]" [style.width]="valueBarHorizontal(chart, chartData.maxNumber)+'%'">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<circle-progress
+  [percent]="chartData.value"
+  [radius]="100"
+  [showInnerStroke]="false"
+  [outerStrokeWidth]="34"
+  [titleFontSize]="'40'"
+  [showUnits]="false"
+  [titleFontWeight]="'700'"
+  [titleColor]="'#ffffff'"
+  [outerStrokeColor]="'#54dc91'"
+  [innerStrokeColor]="'#C7E596'"
+  [showSubtitle]="false"
+  [animation]="true"
+  [outerStrokeGradient]="true"
+  [outerStrokeGradientStopColor]="'#0b3921'"
+  [animationDuration]="300"
+  [clockwise]="false"
+    *ngIf="chartData.type === 'circle-progress'"
+></circle-progress>

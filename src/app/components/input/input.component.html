@@ -1,0 +1,126 @@
+<!-- input -->
+<div *ngIf="!config.select && !config.textarea && !config.file && !config.checkbox && !config.selectComponent && !config.manySelects">
+    <label  for="basic-url" *ngIf="config.labelPosition === 'outside' " class="form-label m-0 mb-1">
+        <small class=" fw-semibold" [ngClass]="{'text-secondary': inputFocused === config.formControlName && inputFocus, 
+        'text-white': inputFocused != config.formControlName && !inputFocus}">{{config.label}}</small>
+    </label>
+
+    <div class="bg-primary border border-primary rounded-3 overflow-hidden" 
+        [ngClass]="{'border-secondary': inputFocused === config.formControlName && inputFocus, 
+        'border-dark': inputFocused != config.formControlName && !inputFocus}">
+            <label for="basic-url" *ngIf="config.labelPosition === 'inside'" class="form-label m-0 ms-2">
+                <small class="text-light fw-semibold"    
+                [ngClass]="{'text-secondary': inputFocused === config.formControlName && inputFocus, 
+                     'text-light': inputFocused != config.formControlName && !inputFocus}" >{{config.label}}</small></label>
+            <div class="input-group">
+  
+              <span *ngIf="config.icon"  class="input-group-text bg-primary border-0 pe-0 pb-2" [ngClass]="{'py-2': config.labelPosition === 'outside' || !config.labelPosition}" id="basic-addon1">
+                  <i class="material-icons text-light d-flex fs-4" >{{config.icon}}</i>  
+              </span> 
+  
+              <input [mask]="config.mask" (blur)="onInputBlur()" (focus)="onInputFocus(config.formControlName)"  [type]="config.type" class="form-control pb-2 text-white bg-primary border-0 fs-5" 
+                [ngClass]="{'py-2': config.labelPosition === 'outside' || !config.labelPosition, 'styled-color-input': config.type === 'color' }" [placeholder]="config.placeholder" aria-label="Username" aria-describedby="basic-addon1" [readonly]="config.readonly" [required]="config.required ?? true" [name]="config.label ? config.label : ''" [(ngModel)]="inputValue" (input)="displayValue()" >     
+              
+  
+      </div>
+    </div>
+    
+</div>
+
+<!-- select  -->
+<div *ngIf="config.select && !config.textarea && !config.file && !config.selectComponent && !config.manySelects ">
+    <label  for="basic-url" *ngIf="config.labelPosition === 'outside' " class="form-label m-0 mb-1">
+        <small class="text-white fw-semibold" >{{config.label}}</small></label>
+    <div class="bg-primary rounded-3 overflow-hidden">
+        <label for="basic-url" *ngIf="config.labelPosition === 'inside' " class="form-label m-0 ms-2"><small class="text-light fw-semibold">{{config.label}}</small></label>
+        <div class="d-flex align-items-center ">
+            <i *ngIf="config.icon" class="material-icons text-light d-flex fs-4 ms-3" >{{config.icon}}</i>  
+            <select [disabled]="config.readonly"  class="form-select bg-primary fs-5 border-0 text-light px-3 py-2 "  [ngClass]="{'pt-1': config.labelPosition === 'inside'}" [name]="config.formControlName ? config.formControlName : ''" (input)="displayValue($event)">
+                <option value="" disabled selected>{{config.placeholder}}</option>
+                <option *ngFor="let option of config.selectOptions" [value]="option.value"> <small class="m-0 "> {{ option.text }}</small></option>               
+            </select>
+        </div>
+    </div>
+</div>
+
+<!-- textarea -->
+<div *ngIf="config.textarea">
+    <label for="basic-url" *ngIf="config.labelPosition === 'outside' " class="form-label m-0 mb-1"><small class="text-white fw-semibold">{{config.label}}</small></label>
+    <div class="bg-primary rounded-3 overflow-hidden">
+        <label for="basic-url" *ngIf="config.labelPosition === 'inside' " class=" ms-2 form-label m-0"><small class="text-light fw-semibold">{{config.label}}</small></label>
+        <textarea  [placeholder]="config.placeholder" class="w-100 bg-primary border-0 fs-5 text-white m-0 p-2 rounded-3" name="" id="" cols="30" rows="5"></textarea>
+    </div>
+    
+</div>
+
+<!-- file -->
+<div *ngIf="config.file">
+    <input type="file" #fileInput class="d-none" (change)="onFileSelected($event)" />
+    <button type="button" (click)="openFilePicker()" class="btn btn-outline-secondary border-tracejed fs-5 w-100 py-2 d-flex text-center align-items-center justify-content-center">
+        <i class="material-icons d-flex fs-4 me-1" >upload</i>
+        Adicionar anexo
+    </button>
+</div>
+
+<!-- checkbox -->
+<div  *ngIf="config.checkbox">
+    <label for="basic-url" *ngIf="config.labelPosition === 'outside' " class="form-label m-0 mb-1"><small class="text-white fw-semibold">{{config.label}}</small></label>
+    <div  class=" p-2 bg-primary rounded-3">
+        <label for="basic-url" *ngIf="config.labelPosition === 'inside' " class="form-label m-0 mb-1"><small class="text-light fw-semibold">{{config.label}}</small></label>
+        <div class="d-flex">
+            <div class="form-check me-5" *ngFor="let checkboxOptions of config.checkboxOptions" >
+                <input (input)="displayValue(checkboxOptions.value)" [checked]="checkboxOptions.value"  class="form-check-input" type="radio" [name]="checkboxOptions.id" [id]="checkboxOptions.id" [disabled]="config.readonly" >
+                <label class="form-check-label" [for]="checkboxOptions.id">
+                  {{checkboxOptions.text}}
+                </label>
+              </div>  
+        </div>
+        
+    </div>      
+</div>
+
+<!-- select component -->
+<div *ngIf="config.selectComponent">
+    <label for="basic-url" *ngIf="config.labelPosition === 'outside' " class="form-label m-0 mb-1"><small class="text-white fw-semibold">{{config.label}}</small></label>
+    <div class="bg-primary rounded-3">
+        <label  for="basic-url" *ngIf="config.labelPosition === 'inside' " class="form-label m-0 ms-2"><small class="text-light fw-semibold" >{{config.label}}</small></label>
+        <select2  [value]="'fefe'" [data]="config.selectComponentOptions" [templates]="template" [placeholder]="config.placeholder || ''" [(ngModel)]="inputValue" [name]="config.formControlName ? config.formControlName : ''" (update)="displayValue($event)">
+            <ng-template #template let-data="data" let-value="value" >
+                <app-status *ngIf="config.selectComponent === 'app-status'" [status]="data"></app-status>
+                <app-icon-text *ngIf="config.selectComponent === 'app-icon-text'" [iconText]="data"></app-icon-text>
+                <app-people *ngIf="config.selectComponent === 'app-people'" [people]="data"></app-people>
+
+            </ng-template>
+        
+        </select2>
+    </div>
+    
+</div>
+
+<!-- select many options -->
+<div *ngIf="config.manySelects" class="bg-primary p-2 rounded-3">
+    <div class="row ">
+        <div class="col-10">
+            <div class="row g-1">
+                <div class="col text-start" *ngFor="let i of selectedComponents;">
+                    <app-status [status]="config.manySelectOptions[i] "></app-status>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-2 d-flex justify-content-end">
+            <div>
+                <div class="dropdown">
+                    <button class="btn p-0 border-0dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="material-icons text-secondary d-flex fs-3" >add_circle</i>  
+                    </button>
+                    <ul class="dropdown-menu bg-dark p-0">
+                        <li *ngFor="let data of config.manySelectOptions; let i = index;">
+                            <button class="btn btn-dark w-100 d-flex align-items-center justify-content-center" (click)="handleSelecteManyOptions(i)"><app-status [status]="data"></app-status></button>
+                        </li>
+                    </ul>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+  <div class="modal fade" [id]="id" tabindex="-1" aria-hidden="true" (hidden.bs.modal)="handleRemoveNewFromUrl()">
+    <div class="modal-dialog modal-dialog-scrollable  modal-dialog-centered" [class]="'modal-'+size">
+      <div class="modal-content bg-dark p-5 rounded-4">
+        <div class="modal-body bg-dark p-0">
+            <div class=" d-flex overflow-x-hidden">
+                <ng-content >
+
+                </ng-content>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button [id]="'button'+id" class="btn btn-outline-secondary rounded-5 fs-5 d-flex align-items-center px-3 ms-3 d-none" data-bs-toggle="modal" [attr.data-bs-target]="'#'+id"> 
+  </button>
+
